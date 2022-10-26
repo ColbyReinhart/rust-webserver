@@ -1,0 +1,268 @@
+/* --- Animations --- */
+
+@keyframes symplyfy-click {
+	0% {
+		position: relative;
+		top: 0;
+		left: 0;
+		box-shadow: 0.4vw 0.8vw var(--dark-gold);	
+	}
+	50% {
+		position: relative;
+		top: 0.3vw;
+		left: 0.6vw;
+		box-shadow: 0.1vw 0.2vw var(--dark-gold);
+	}
+	100% {
+		position: relative;
+		top: 0;
+		left: 0;
+		box-shadow: 0.4vw 0.8vw var(--dark-gold);
+	}
+}
+
+@keyframes netpong-click {
+	0% {
+		position: relative;
+		top: 0;
+		left: 0;
+		box-shadow: 0.4vw 0.8vw var(--dark-red);	
+	}
+	50% {
+		position: relative;
+		top: 0.3vw;
+		left: 0.6vw;
+		box-shadow: 0.1vw 0.2vw var(--dark-red);
+	}
+	100% {
+		position: relative;
+		top: 0;
+		left: 0;
+		box-shadow: 0.4vw 0.8vw var(--dark-red);
+	}
+}
+
+/* --- General styles --- */
+
+body {
+	margin: 0;
+	padding: 0;
+	width: 100vw;
+	background-color: var(--background);
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: flex-start;
+	align-items: center;
+	align-content: center;
+	color: var(--text-white);
+	font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	animation-name: screen-appear;
+	animation-duration: 2s;
+	overflow-x: hidden;
+}
+
+h1 {
+	font-size: 5vmin;
+	margin: 0;
+}
+
+#content {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	align-content: flex-start;
+	justify-content: flex-start;
+	gap: 5vmin;
+}
+
+#footer {
+	margin-bottom: 10vh;
+	font-size: 4vmin;
+}
+
+/* --- Project Classes --- */
+
+.project {
+	width: 75vw;
+	position: relative;
+	margin-top: 5vmin;
+	padding-top: 5vmin;
+	border-radius: 3vmin;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	align-content: flex-start;
+	justify-content: flex-start;
+	gap: 2vmin;
+	padding: 12vmin 2vmin 2vmin 2vmin;
+}
+
+.project p {
+	margin: 0;
+	font-size: 4vmin;
+}
+
+a {
+	color: cornflowerblue;
+}
+
+.githubLink {
+	font-size: 5vmin;
+}
+
+.project button {
+	font-size: 5vmin;
+	padding: 1vmin;
+	border: unset;
+	border-radius: 2vmin;
+	transition: all 0.5s;
+	cursor: pointer;
+}
+
+.projectLabel {
+	position: absolute;
+	background-color: var(--background);
+	padding: 1vmin;
+	border-radius: 5vmin;
+}
+
+/* --- Symplyfy --- */
+
+#symplyfy, #symplyfyLabel {
+	border: solid 1vmin var(--gold);
+}
+
+#symplyfyGalleryButton {
+	background-color: var(--gold);
+	color: var(--text-white);
+	box-shadow: 0.4vw 0.8vw var(--dark-gold);
+}
+
+#symplyfyGalleryButton:hover {
+	box-shadow: 0.4vw 0.8vw var(--dark-gold);
+}
+
+#symplyfyGalleryButton:active {
+	animation-name: symplyfy-click;
+	animation-duration: 0.5s;
+}
+
+/* --- Webserver From Scratch --- */
+
+#webserver, #webserverLabel {
+	border: solid 1vmin var(--cyan);
+}
+
+/* --- Netpong --- */
+
+#netpong, #netpongLabel {
+	border: solid 1vmin var(--light-red);
+}
+
+/* --- Gallery Styles --- */
+
+.galleryBox {
+	display: none;
+	position: fixed;
+	z-index: 1000;
+	padding-top: 10vh;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	background-color: rgba(255,255,255,0.5);
+	overflow: hidden;
+	animation-duration: 1s;
+}
+
+.gallery {
+	background-color: var(--background);
+	z-index: 1001;
+	position: relative;
+	margin: auto;
+	border-radius: 1vmin;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	align-content: flex-start;
+	justify-content: flex-start;
+	overflow-y: scroll;
+}
+
+.galleryClose {
+	width: 7vmin;
+	height: 7vmin;
+	background-color: rgb(202, 36, 36);
+	color: var(--text-white);
+	font-weight: bold;
+	border-radius: 1vmin 0 0 0 !important;
+	position: fixed;
+}
+
+/* --- Mobile-only --- */
+
+@media (orientation: portrait) {
+
+	h2 {
+		font-size: 5vmin;
+		margin: 0;
+	}
+
+	.projectLabel {
+		top: -3vh;
+	}
+
+	.gallery {
+		background-color: var(--background);
+		padding: 4vh 0 4vh 0;
+		width: 100vw;
+		height: 80vh;
+		gap: 2vh;
+	}
+	
+	.gallery img, .gallery video {
+		width: 85%;
+		height: auto;
+	}
+
+	.galleryClose {
+		top: 10vh;
+		left: 0;
+	}
+
+}
+
+/* --- Desktop-only --- */
+
+@media (orientation: landscape) {
+
+	h2 {
+		font-size: 8vmin;
+		margin: 0;
+	}
+
+	.projectLabel {
+		top: -8vh;
+	}
+
+	.gallery {
+		background-color: var(--background);
+		padding: 5vmin;
+		width: 70vw;
+		height: 70vh;
+		gap: 2vmin;
+	}
+	
+	.gallery img, .gallery video {
+		max-width: 80%;
+		width: auto;
+		height: auto;
+	}
+
+	.galleryClose {
+		top: 10vh;
+		left: calc(15vw - 5vh);
+	}
+
+}

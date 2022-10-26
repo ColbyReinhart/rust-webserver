@@ -1,0 +1,252 @@
+/* --- color pallette --- */
+
+:root {
+	--background: #2e2d2d;
+	--dark-gray: #212121;
+	--text-white: #d9d9d9;
+	--darker-white: #929292;
+	--light-red: #9e2a2b;
+	--dark-red: #540b0e;
+	--gold: #e09f3e;
+	--dark-gold: #af7319;
+	--cream: #fff3b0;
+	--cyan: #335c67;
+}
+.lightRed {
+	background-color: var(--light-red);
+}
+.darkRed {
+	background-color: var(--dark-red);
+}
+.gold {
+	background-color: var(--gold);
+}
+.cream {
+	background-color: var(--cream);
+}
+.cyan {
+	background-color: var(--cyan);
+}
+
+.goldText {
+	color: var(--gold);
+}
+.cyanText {
+	color: var(--cyan);
+}
+
+/* --- Scrollbar --- */
+/* width */
+::-webkit-scrollbar {
+	height: 1.5vh;
+	overflow: hidden;
+}
+/* Track */
+::-webkit-scrollbar-track {
+	box-shadow: inset 0 0 5px grey; 
+	border-radius: 1vh;
+}
+/* Handle */
+::-webkit-scrollbar-thumb {
+	background: var(--text-white); 
+	border-radius: 1vh;
+}
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+	background: var(--darker-white);
+}
+
+/* --- General styles --- */
+
+@keyframes screen-appear {
+	0% {opacity: 0;}
+	100% {opacity: 1;}
+}
+
+@keyframes screen-hide {
+	0% {opacity: 1;}
+	100% {opacity: 0;}
+}
+
+@keyframes navmenu-appear {
+	0% {left: 100vw}
+	100% {left: 0vw}
+}
+
+@keyframes navmenu-hide {
+	0% {left: 0vw; display: flex;}
+	100% {left: 100vw; display: flex;}
+}
+
+.navShow {
+	animation-name: navmenu-appear;
+	animation-duration: 0.75s;
+}
+
+.navHide {
+	animation-name: navmenu-hide;
+	animation-duration: 0.75s;
+}
+
+.navbarItem {
+	background-color: unset;
+	border: unset;
+	padding: 1vmin;
+	color: var(--darker-white);
+	border-radius: 2vmin;
+	transition: all 0.5s;
+	cursor: pointer;
+	font-size: 2.5vw;
+}
+
+.navbarItem:active {
+	animation-name: button-click;
+	animation-duration: 0.5s;
+}
+
+#navbar {
+	position: -webkit-sticky;
+	position: sticky;
+	top: 0;
+	background-color: var(--background);
+	z-index: 999;
+	border-bottom: 5px solid var(--light-red);
+
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	width: 94vw;
+	height: 12vh;
+	font-weight: bold;
+	font-size: 2.5vw;
+	margin-top: 1vmin;
+	margin-left: 3vw;
+	margin-right: 3vw;
+}
+
+/* --- Mobile-only --- */
+
+@media (orientation: portrait) {
+
+	::-webkit-scrollbar {
+		display: none;
+	}
+
+	.contentBox {
+		display: flex;
+		flex-direction: column;
+		flex-wrap: wrap;
+		justify-content: space-evenly;
+		align-items: center;
+		align-content: center;
+	}
+
+	.navbarItem {
+		background-color: var(--light-red);
+		color: var(--text-white);
+		box-shadow: 0.8vw 1.6vw var(--dark-red);
+		font-size: 5vh;
+	}
+
+	@keyframes button-click {
+		0% {
+			position: relative;
+			top: 0;
+			left: 0;
+			box-shadow: 0.8vw 1.6vw var(--dark-red);	
+		}
+		50% {
+			position: relative;
+			top: 0.6vw;
+			left: 1.2vw;
+			box-shadow: 0.2vw 0.4vw var(--dark-red);
+		}
+		100% {
+			position: relative;
+			top: 0;
+			left: 0;
+			box-shadow: 0.8vw 1.6vw var(--dark-red);
+		}
+	}
+
+	#nametag, #hamburgerMenu {
+		font-size: max(2.5vw, 30px);
+	}
+
+	#navbarLinks {
+		z-index: 999;
+		background-color: var(--background);
+		font-size: 10vw;
+		display: none;
+		flex-direction: column;
+		justify-content: flex-start;
+		align-items: center;
+		align-content: center;
+		gap: 5vh;
+		width: 100vw;
+		height: 90vh;
+		position: absolute;
+		top: 10vh;
+		left: 0;
+	}
+
+	#hamburgerMenu {
+		padding: 5px;
+		border: solid 3px var(--text-white);
+		border-radius: 3px;
+	}
+}
+
+/* --- Desktop-only --- */
+
+@media (orientation: landscape) {
+
+	.navbarItem:hover {
+		background-color: var(--light-red);
+		color: var(--text-white);
+		box-shadow: 0.4vw 0.8vw var(--dark-red);
+	}
+
+	@keyframes button-click {
+		0% {
+			position: relative;
+			top: 0;
+			left: 0;
+			box-shadow: 0.4vw 0.8vw var(--dark-red);	
+		}
+		50% {
+			position: relative;
+			top: 0.3vw;
+			left: 0.6vw;
+			box-shadow: 0.1vw 0.2vw var(--dark-red);
+		}
+		100% {
+			position: relative;
+			top: 0;
+			left: 0;
+			box-shadow: 0.4vw 0.8vw var(--dark-red);
+		}
+	}
+
+	.contentBox {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		justify-content: space-evenly;
+		align-items: center;
+		align-content: center;
+	}
+
+	#nametag {
+		width: 30%;
+		font-size: max(2.5vw, 30px);
+	}
+
+	#navbarLinks {
+		width: 60%;
+	}
+
+	#hamburgerMenu {
+		display: none;
+	}
+}

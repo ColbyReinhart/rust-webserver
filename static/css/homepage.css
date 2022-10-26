@@ -1,0 +1,80 @@
+/* --- animation --- */
+
+#greetings > h1:hover {
+	transform: translate(-0.5vw, -0.5vw);
+	text-shadow: 1vw 1vw var(--dark-gray);
+}
+
+/* --- General styles --- */
+
+body {
+	margin: 0;
+	padding: 0;
+	width: 100vw;
+	height: 100vh;
+	background-color: var(--background);
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: flex-start;
+	align-items: center;
+	align-content: center;
+	color: var(--text-white);
+	font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	animation-name: screen-appear;
+	animation-duration: 2s;
+	overflow-x: hidden;
+}
+
+#content {
+	height: 90vh;
+}
+
+#intro {
+	color: var(--darker-white);
+}
+
+/* --- Mobile-only --- */
+
+@media (orientation: portrait) {
+	#greetings > h1 {
+		text-shadow: 0.5vw 0.5vw var(--dark-gray);
+		transition: all 0.5s;
+		font-size: 8vw;
+		margin: 0;
+	}
+
+	#greetings {
+		font-size: 6vw;
+		width: 80%;
+	}
+
+	#headshot {
+		width: 88vw;
+		height: auto;
+		border: solid 5px var(--light-red);
+		border-radius: 10px;
+	}
+}
+
+/* --- Desktop-only --- */
+
+@media (orientation: landscape) {
+
+	#greetings > h1 {
+		text-shadow: 0.5vw 0.5vw var(--dark-gray);
+		transition: all 0.5s;
+	}
+
+	#greetings {
+		font-size: 3vw;
+		width: 40%;
+	}
+
+	#headshot {
+		height: 80vh;
+		width: auto;
+		border: solid 5px var(--light-red);
+		border-radius: 10px;
+	}
+}

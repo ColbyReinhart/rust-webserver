@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="My projects.">
+		<meta name="author" content="Colby Reinhart">
+
+		<title>My Projects</title>
+		<link rel="stylesheet" href="static/css/global.css">
+		<link rel="stylesheet" href="static/css/projects.css">
+		<script defer src="static/js/global.js" type="text/javascript"></script>
+		<script defer src="static/js/projects.js" type="text/javascript"></script>
+		<script src="https://kit.fontawesome.com/e4862ea8a4.js" crossorigin="anonymous"></script>
+	</head>
+	<body>
+
+		<div id="navbar" class="contentBox">
+			<div id="nametag">
+				Colby Reinhart
+			</div>
+
+			<p id="hamburgerMenu" class="fa-solid fa-bars"></p>
+
+			<div id="navbarLinks" class="contentBox">
+				<button id="homepageLink" class="navbarItem">
+					Home
+				</button>
+				<button id="aboutmeLink" class="navbarItem">
+					About Me
+				</button>
+				<button id="projectsLink" class="navbarItem">
+					Projects
+				</button>
+				<button id="experienceLink" class="navbarItem">
+					Experience
+				</button>
+			</div>
+		</div>
+
+		<br>
+
+		<div id="content">
+
+			<h1>My Projects</h1>
+
+			<div id="symplyfy" class="project">
+				<div id="symplyfyLabel" class="projectLabel">
+					<h2>Symplyfy</h2>
+				</div>
+
+				<a class="githubLink" target="_blank" href="https://github.com/JMANN240/cof-2021">
+					See it on GitHub
+				</a>
+
+				<p>
+					Symplyfy is an attempt to make computing easier
+					for those who cannot keep up with today's
+					ever-demanding technological world. Symplyfy
+					is an electron application made in raw
+					html/css/js which acts as an overlay on a
+					windows environment to create an easier and
+					simpler experience for those who want to
+					use a computer but are not proficient at
+					using one. The key design principles are
+					simplicity, restriction, intuition, and
+					assistance.
+				</p>
+				<p>
+					I worked on this project as part of the
+					Choose Ohio First scholarship program
+					between Fall 2021 and Spring 2022 with
+					a group of three other undergrad students.
+					Symplyfy won the best presentation award
+					at the Choose Ohio First Research Symposium
+					at Cleveland State University in April 2022.
+				</p>
+
+				<button type="button" id="symplyfyGalleryButton">
+					View Gallery
+				</button>
+
+				<div class="galleryBox" id="symplyfyGallery">
+					<div class="gallery">
+						<img src="static/images/symplyfy-homescreen.png">
+						<img src="static/images/symplyfy-picture-viewing.png">
+						<img src="static/images/symplyfy-streaming.png">
+						<button type="button" id="symplyfyGalleryClose" class="galleryClose">
+							<i class="fa-solid fa-xmark"></i>
+						</button>
+					</div>
+				</div>
+			</div>
+
+			<div id="webserver" class="project">
+				<div id="webserverLabel" class="projectLabel">
+					<h2>Webserver From Scratch</h2>
+				</div>
+
+				<a class="githubLink" target="_blank" href="https://github.com/ColbyReinhart/webserver-from-scratch">
+					See it on GitHub
+				</a>
+
+				<p>
+					Not only did I code this webserver from scratch in C using only
+					C standard libraries, but it is also what this website is hosted
+					from! "Webserver from Scratch" is my attempt at building my own
+					personalized webserver. It started out very bare-bones, only
+					capable of get requests with no parameters and had only the
+					most essential security features. However, I've been building it
+					up over time and hope that someday it will become quite
+					sophisticated.
+				</p>
+				<p>
+					This webserver works with raw sockets and uses a servlet structure
+					to give specialized functionality for each page it serves, allowing
+					support for dynamic web applications and customizeable RESTful APIs.
+					I hope to extend this functionality in the future to create my own
+					miniature web framework.
+				</p>
+			</div>
+
+			<div id="netpong" class="project">
+				<div id="netpongLabel" class="projectLabel">
+					<h2>Netpong</h2>
+				</div>
+
+				<a class="githubLink" target="_blank" href="https://github.com/ColbyReinhart/netpong">
+					See it on GitHub
+				</a>
+
+				<p>
+					Netpong is a simple TUI multiplayer pong game written in C
+					using the curses library. The program can be ran in server
+					mode to host a game and in client mode to join a game.
+					When the game begins, each player assumes one side of the
+					court. Just like regular pong, the goal for each player is
+					to keep the ball from passing their paddle. The player with
+					the most points after a certain number of rounds wins!
+				</p>
+				<p>
+					This program was done as a project for my Systems Programming
+					course in college. The multiplayer functionality is achieved
+					through raw sockets. This program also implements the
+					<a target="_blank" href="/projects/SPPBTP.pdf">
+					Simple Ping Pong Ball Transfer Protocol</a>,
+					meaning it is compatible with others also implementing it.
+				</p>
+			</div>
+
+			<div class="project">
+				<p id="footer">
+					That concludes my featured projects, but check out my
+					<a target="_blank" href="https://github.com/ColbyReinhart">GitHub</a>
+					page for many more fun projects!
+				</p>
+			</div>
+		</div>
+	</body>
+</html>

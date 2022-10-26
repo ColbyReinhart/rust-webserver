@@ -1,60 +1,63 @@
-// Rust webserver from scratch (and rust std libraries)
+// Rust webserver using rocket
 // By Colby Reinhart
 // 10-26-2022
 
-use std::
+#[macro_use] extern crate rocket;
+
+use std::path::{Path, PathBuf};
+use std::fmt;
+use rocket::fs::NamedFile;
+
+//
+// Rocket boilerplate
+//
+
+#[launch]
+fn rocket() -> _
 {
-	fs,
-	io::{prelude::*, BufReader},
-	net::{TcpListener, TcpStream}
-};
-
-use threadpool::ThreadPool;
-
-// Some global constants
-static NUM_THREADS: usize = 10;
-
-fn main()
-{
-	// Create a listener to listen for incoming TCP connections
-	let listener = TcpListener::bind("127.0.0.1:8080").unwrap();
-
-	// Create a thread pool to handle requests
-	let pool = ThreadPool::new(NUM_THREADS);
-	
-	// Handle each incoming connection
-	for stream in listener.incoming()
-	{
-		let stream = stream.unwrap();
-
-		pool.execute(|| {
-			handle_connection(stream);
-		});
-	}
+    rocket::build().mount("/", routes![
+		index,
+		get_static,
+		get_favicon,
+		get_page
+	])
 }
 
-fn handle_connection(mut stream: TcpStream)
+//
+// Route favicon
+//
+
+#[get("/favicon.ico")]
+async fn get_favicon() -> Option<NamedFile>
 {
-	// Create a buffer reader to read the TCP stream
-	let buf_reader = BufReader::new(&mut stream);
+	NamedFile::open(Path::new("favicon.ico")).await.ok()	
+}
 
-	// Process the incoming HTTP request
-	let http_request: Vec<_> = buf_reader
-		.lines()
-		.map(|result| result.unwrap())
-		.take_while(|line| !line.is_empty())
-		.collect();
+//
+// Route static folder
+//
 
-	// Output the processed request
-	println!("Request: {:#?}", http_request);
+#[get("/static/<file..>")]
+async fn get_static(file: PathBuf) -> Option<NamedFile>
+{
+	NamedFile::open(Path::new("static/").join(file)).await.ok()	
+}
 
-	// Prepare the response headers and body
-	let status_line = "HTTP/1.1 200 OK";
-	let contents = fs::read_to_string("static/hello.html").unwrap();
-	let length = contents.len();
+//
+// Route html
+//
 
-	// Format and write the response
-	let response =
-		format!("{status_line}\r\nContent-Length: {length}\r\n\r\n{contents}");
-	stream.write_all(response.as_bytes()).unwrap();
+#[get("/")]
+async fn index() -> Option<NamedFile>
+{
+    NamedFile::open(Path::new("templates/homepage.html")).await.ok()
+}
+
+#[get("/<page>")]
+async fn get_page(page: &str) -> Option<NamedFile>
+{
+	let mut page_path: String = "templates/".to_owned();
+	page_path.push_str(page);
+	page_path.push_str(".html");
+	NamedFile::open(Path::new(&page_path)).await.ok()
 }
