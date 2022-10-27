@@ -18,7 +18,8 @@ fn rocket() -> _
 		index,
 		get_static,
 		get_favicon,
-		get_page
+		get_page,
+		get_nimbus
 	])
 }
 
@@ -43,7 +44,7 @@ async fn get_static(file: PathBuf) -> Option<NamedFile>
 }
 
 //
-// Route html
+// Route main website html
 //
 
 #[get("/")]
@@ -59,4 +60,13 @@ async fn get_page(page: &str) -> Option<NamedFile>
 	page_path.push_str(page);
 	page_path.push_str(".html");
 	NamedFile::open(Path::new(&page_path)).await.ok()
+}
+
+//
+// Route nimbus cloud
+//
+#[get("/nimbus")]
+async fn get_nimbus() -> Option<NamedFile>
+{
+	NamedFile::open(Path::new("templates/nimbus.html")).await.ok()
 }
