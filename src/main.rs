@@ -5,7 +5,6 @@
 #[macro_use] extern crate rocket;
 
 use std::path::{Path, PathBuf};
-use std::fmt;
 use rocket::fs::NamedFile;
 
 //
