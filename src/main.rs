@@ -6,6 +6,8 @@
 
 use std::path::{Path, PathBuf};
 use rocket::fs::NamedFile;
+use rocket::http::Header;
+use rocket::response::Responder;
 
 //
 // Rocket boilerplate
@@ -19,8 +21,28 @@ fn rocket() -> _
 		get_static,
 		get_favicon,
 		get_page,
+		get_downloads,
 		get_nimbus
 	])
+}
+
+// Derive a responder to set correct content-disposition for downloads
+#[derive(Responder)]
+struct DownloadResponder<T>
+{
+    inner: T,
+    content_disposition: Header<'static>,
+}
+impl<'r, 'o: 'r, T: Responder<'r, 'o>> DownloadResponder<T>
+{
+    fn new(inner: T, header_value: String) -> Self
+	{
+        DownloadResponder
+		{
+            inner,
+            content_disposition: Header::new("content-disposition", header_value),
+        }
+    }
 }
 
 //
@@ -60,6 +82,16 @@ async fn get_page(page: &str) -> Option<NamedFile>
 	page_path.push_str(page);
 	page_path.push_str(".html");
 	NamedFile::open(Path::new(&page_path)).await.ok()
+}
+
+//
+// Route downloads
+//
+
+#[get("/downloads/<file..>")]
+async fn get_downloads(file: PathBuf) -> DownloadResponder<Option<NamedFile>>
+{
+	DownloadResponder::new(NamedFile::open(Path::new("local-files/downloads/").join(file)).await.ok(), "attachment".to_string())
 }
 
 //
