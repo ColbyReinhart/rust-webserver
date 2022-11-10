@@ -99,7 +99,7 @@ async fn get_downloads(file: PathBuf) -> DownloadResponder<Option<NamedFile>>
 //
 
 #[get("/files/<file..>")]
-async fn get_media_file(file: PathBuf) -> Option<NamedFile>
+async fn get_media_file(file: PathBuf) -> DownloadResponder<Option<NamedFile>>
 {
-	NamedFile::open(Path::new("local-files/media-files/").join(file)).await.ok()
+	DownloadResponder::new(NamedFile::open(Path::new("local-files/media-files/").join(file)).await.ok(), "inline".to_string())
 }
