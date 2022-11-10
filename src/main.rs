@@ -22,7 +22,7 @@ fn rocket() -> _
 		get_favicon,
 		get_page,
 		get_downloads,
-		get_nimbus
+		get_media_file
 	])
 }
 
@@ -95,10 +95,11 @@ async fn get_downloads(file: PathBuf) -> DownloadResponder<Option<NamedFile>>
 }
 
 //
-// Route nimbus cloud
+// Route media files
 //
-#[get("/nimbus")]
-async fn get_nimbus() -> Option<NamedFile>
+
+#[get("/files/<file..>")]
+async fn get_media_file(file: PathBuf) -> Option<NamedFile>
 {
-	NamedFile::open(Path::new("templates/nimbus.html")).await.ok()
+	NamedFile::open(Path::new("local-files/media-files/").join(file)).await.ok()
 }
