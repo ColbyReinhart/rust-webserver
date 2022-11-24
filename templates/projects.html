@@ -26,6 +26,9 @@
 				<button id="homepageLink" class="navbarItem">
 					Home
 				</button>
+				<button id="resumeLink" class="navbarItem">
+					Resume
+				</button>
 				<button id="aboutmeLink" class="navbarItem">
 					About Me
 				</button>
@@ -43,6 +46,65 @@
 		<div id="content">
 
 			<h1>My Projects</h1>
+
+			<div id="vrtour" class="project">
+				<div id="vrtourLabel" class="projectLabel">
+					<h2>Virtual Reality Tour</h2>
+				</div>
+
+				<a class="githubLink" target="_blank" href="https://github.com/ATR-Lab/CS_VR-Tour">
+					See it on GitHub
+				</a>
+				<a class="githubLink" target="_blank" href="https://vrtour.cs.kent.edu">
+					Or take the tour for yourself!
+				</a>
+
+				<p>
+					The Kent State Virtual Reality Tour aims to
+					provide a virtual experience for those who wish
+					to visit different departments on Kent State
+					University campus. Additionally, the tour provides
+					a suite of tools and a login system which allows
+					admins to add to, delete from, or otherwise edit
+					the tour directly from the client. As part of my
+					undergraduate capstone project, my task was to
+					take an existing but unfinished  and messy codebase
+					for this project, learn how it functions, and
+					fix/improve upon it as much as possible. I worked
+					with a team of four other students for this endeavor,
+					which was my largest undertaking so far at the time.
+					Although we could not even come close to fixing
+					many of the tour's issues within the allotted time
+					we had, we were able to drastically improve the user
+					experience and thus improve the image of the Kent
+					State CS department.
+				</p>
+				<p>
+					This project consists of three main portions:
+					a client application which is served
+					to the user using WebGL, a webserver which delivers
+					the tour and hosts a communication API, and a database
+					which provides resources, data, and assets which the
+					tour needs to function. The client was developed in Unity
+					with C# scripting, the server was developed in C# using
+					ASP.NET, and the database ran MySql/MariaDB. The server
+					and database were both hosted on a university-provided
+					virtual machine running Ubuntu.
+				</p>
+				<p>
+					In this project I functioned as team leader and gained
+					valuable experience in how to manage a team and cooperate
+					towards a goal efficiently and effectively. I mainly worked
+					on the client and API, but my contributions touched all
+					aspects. My largest contribution was implementing functionality
+					to prevserve cardinal orientation when moving between locations,
+					which I did by manually mapping out north in each location,
+					creating a database field to hold this data, and coding some math
+					when transitioning between locations to preserve the correct
+					orienatation between locations with arbitrarily-facing camera
+					directions.
+				</p>
+			</div>
 
 			<div id="symplyfy" class="project">
 				<div id="symplyfyLabel" class="projectLabel">

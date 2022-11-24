@@ -127,6 +127,12 @@ a {
 	border-radius: 5vmin;
 }
 
+/* --- Virtual Reality Tour --- */
+
+#vrtour, #vrtourLabel {
+	border: solid 1vmin var(--cream);
+}
+
 /* --- Symplyfy --- */
 
 #symplyfy, #symplyfyLabel {

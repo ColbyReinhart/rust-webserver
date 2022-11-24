@@ -60,17 +60,24 @@ img {
 	justify-content: center;
 	gap: 3vh;
 }
+	
+img {
+	height: auto;
+}
+
+#story {
+	width: 80vw;
+}
 
 /* --- Mobile-only --- */
 
 @media (orientation: portrait) {
-	
+
 	img {
-		height: 40vh;
+		width: 70vw;
 	}
 
 	#story {
-		width: 80vw;
 		font-size: 2vh;
 	}
 
@@ -81,11 +88,10 @@ img {
 @media (orientation: landscape) {
 
 	img {
-		height: 60vh;
+		width: 30vw;
 	}
 
 	#story {
-		width: 50vw;
-		font-size: 3vh;
+		font-size: 2vw;
 	}
 }

@@ -18,6 +18,7 @@ fn rocket() -> _
 {
     rocket::build().mount("/", routes![
 		index,
+		get_resume,
 		get_static,
 		get_favicon,
 		get_page,
@@ -73,6 +74,12 @@ async fn get_static(file: PathBuf) -> Option<NamedFile>
 async fn index() -> Option<NamedFile>
 {
     NamedFile::open(Path::new("templates/homepage.html")).await.ok()
+}
+
+#[get("/resume")]
+async fn get_resume() -> Option<NamedFile>
+{
+	NamedFile::open(Path::new("local-files/media-files/resume.pdf")).await.ok()
 }
 
 #[get("/<page>")]

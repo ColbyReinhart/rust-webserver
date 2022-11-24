@@ -2,6 +2,9 @@
 document.querySelector("#homepageLink").addEventListener("click", () => {
 	window.location.assign("/");
 });
+document.querySelector("#resumeLink").addEventListener("click", () => {
+	window.location.assign("/resume");
+});
 document.querySelector("#aboutmeLink").addEventListener("click", () => {
 	window.location.assign("/aboutme");
 });
